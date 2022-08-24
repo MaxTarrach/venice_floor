@@ -161,7 +161,7 @@ class Square {
   display(){
     push();
     rotate(this.rotation);
-    image(img, -90, -90);
+    //image(img, -90, -90);
     noFill();
     rect(this.x, this.y ,this.size, this.size);
     pop();
@@ -249,90 +249,3 @@ function spinning_draw(moving_tile){
   }
 
 };
-
-
-
-
-
-
-
-
-
-
-
-function create_Square(xStart, yStart){
-
-  width = width/ 6;
-  height = height/ 6;
-
-  var vertices = [];
-
-  vertices.push(xStart); //0
-  vertices.push(yStart); //1
-  vertices.push(xStart); //2
-  vertices.push(yStart + height); //3
-  vertices.push(xStart + width); //4
-  vertices.push(yStart + height); //5
-  vertices.push(xStart + width); //6
-  vertices.push(yStart); //7
-  
-  return vertices; 
-
-};
-
-// Create 4 triangles needed to create a square based on vertices 
-function create_Triangles_Super(params){
-
-  xCenter = (params[0] + params[6]) / 2;
-  yCenter = (params[1] + params[3]) / 2;
-  
-  params.push(xCenter);
-  params.push(yCenter);
-  
-  create_Triangle_one(params);
-  create_Triangle_two(params);
-  create_Triangle_three(params);
-  create_Triangle_four(params);
-
-};
-
-function create_Triangle_one(params){
-
-  xCenter = (params[0] + params[6]) / 2;
-  yCenter = (params[1] + params[3]) / 2;
-
- 
-
-  triangle(params[0], params[1], params[2], params[3], params[8], params[9]); 
-   
-};
-
-function create_Triangle_two(params){
-
-  xCenter = (params[0] + params[6]) / 2;
-  yCenter = (params[1] + params[3]) / 2;  
-
-
-
-  triangle(params[2], params[3], params[4], params[5], params[8], params[9]);
-};
-
-function create_Triangle_three(params){
-
-  xCenter = (params[0] + params[6]) / 2;
-  yCenter = (params[1] + params[3]) / 2;  
-
-
-
-  triangle(params[4], params[5], params[6], params[7], params[8], params[9]);
-};
-
-function create_Triangle_four(params){
-
-  xCenter = (params[0] + params[6]) / 2;
-  yCenter = (params[1] + params[3]) / 2;  
-
-
-  triangle(params[0], params[1], params[8], params[9], params[6], params[7]);
-};
-
